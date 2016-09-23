@@ -15,6 +15,17 @@
   ],
   "main": "./extension",
   "contributes": {
+    "languages": [{
+      "id": "erb",
+      "aliases": ["HTML Ruby", "erb"],
+      "extensions": [".erb", ".rhtml", ".html.erb"],
+      "configuration": "./erb.configuration.json"
+    }],
+    "grammars": [{
+      "language": "erb",
+      "scopeName": "text.html.erb",
+      "path": "./syntaxes/erb.tmLanguage"
+    }],
     "commands": [{
       "command": "extension.sayHello",
       "title": "Hello World"
