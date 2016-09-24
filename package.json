@@ -11,9 +11,9 @@
     "Languages"
   ],
   "activationEvents": [
-    "onCommand:extension.sayHello"
+    "onCommand:extension.toggleErb"
   ],
-  "main": "./extension",
+  "main": "./erb.js",
   "contributes": {
     "languages": [{
       "id": "erb",
@@ -27,8 +27,8 @@
       "path": "./syntaxes/erb.tmLanguage"
     }],
     "commands": [{
-      "command": "extension.sayHello",
-      "title": "Hello World"
+      "command": "extension.toggleErb",
+      "title": "Toggle between erb blocks"
     }]
   },
   "scripts": {
