@@ -36,7 +36,6 @@ function insertErbTags(text) {
   return `${erb_blocks[0][0]} ${text} ${erb_blocks[0][1]}`;
 }
 
-
 function replaceErbTags(text) {
   let tags = findSorroundingTags(text);
   let next_tags = getNextErbTags(tags);
@@ -60,53 +59,80 @@ function getNextErbTags(tags) {
 
 function getSelectionRange(selection, editor) {
   let line = editor.document.lineAt(selection.start);
-  let selectedText = editor.document.getText(selection);
+  let selected_text = editor.document.getText(selection);
+  let new_selection = new vscode.Selection(selection.start, selection.end);
+  let start_position = new_selection.start;
+  let end_position = new_selection.end;
+  let opener_position = [];
+  let closer_position = [];
+  // let start_char = ((selection.start.character-1) <= line.firstNonWhitespaceCharacterIndex) ? line.firstNonWhitespaceCharacterIndex : selection.start.character - 1;
+  // let end_char = ((selection.end.character+1) >= line.range.end.character) ? line.range.end.character : selection.end.character+1;
 
-  if ( selection.isEmpty && editor.document.getText(selection).trim().length == 0 && !line.isEmptyOrWhitespace) {
-    let start = new vscode.Position(selection.start.line, line.firstNonWhitespaceCharacterIndex);
-    let end = line.range.end;
-    let newSelection = new vscode.Selection(start, end);
-    editor.document.getText(newSelection)
+  while (start_position.character > line.firstNonWhitespaceCharacterIndex) {
+    start_position = new vscode.Position(line.lineNumber, new_selection.start.character - 1);
+    new_selection = new vscode.Selection(start_position, end_position);
+
+    if (editor.document.getText(new_selection).match(erb_opener_regex)){
+      opener_position.push(start_position);
+      break;
+    }
+  }
+  while (end_position.character < line.range.end.character) {
+    end_position = new vscode.Position(line.lineNumber, new_selection.end.character + 1);
+    new_selection = new vscode.Selection(start_position, end_position);
+    if (editor.document.getText(new_selection).match(erb_closer_regex)){
+      closer_position.push(end_position);
+      break;
+    }
+  }
+
+  if (opener_position.length > 0 && closer_position.length > 0) {
+    return new vscode.Range(new_selection.start, new_selection.end);
+  } else if ( selection.isEmpty && editor.document.getText(selection).trim().length == 0 && !line.isEmptyOrWhitespace) {
+    start_position = new vscode.Position(selection.start.line, line.firstNonWhitespaceCharacterIndex);
+    end_position = line.range.end;
+    new_selection = new vscode.Selection(start, end);
     return new vscode.Range(start, end);
   }
+
   return new vscode.Range(selection.start, selection.end);
 }
 
 function toggleTags(editor) {
-  let selectionsMap = {};
-  let newSelections = [];
-  let lineOffset = 0;
+  let selections_map = {};
+  let new_selections = [];
+  let line_offset = 0;
   let selections = editor.selections.filter(function(selection) { return selection.isSingleLine });
 
-  // Push selections to selectionsMap grouped by line
+  // Push selections to selections_map grouped by line
   selections.forEach(function (selection) {
-    return selectionsMap[selection.start.line] ? selectionsMap[selection.start.line].push(selection) : selectionsMap[selection.start.line] = [selection];
+    return selections_map[selection.start.line] ? selections_map[selection.start.line].push(selection) : selections_map[selection.start.line] = [selection];
   });
 
 
   editor.edit(function(editBuilder) {
-    for (let key in selectionsMap) {
-      if (selectionsMap.hasOwnProperty(key)) {
-        lineOffset = 0;
+    for (let key in selections_map) {
+      if (selections_map.hasOwnProperty(key)) {
+        line_offset = 0;
         // Order selections by ltr position
-        selectionsMap[key] = selectionsMap[key].sort(function (first, second) { return first.end.isBefore(second.start) ? -1 : 1; });
+        selections_map[key] = selections_map[key].sort(function (first, second) { return first.end.isBefore(second.start) ? -1 : 1; });
 
-        selectionsMap[key].forEach(function(selection) {
+        selections_map[key].forEach(function(selection) {
           let selectedRange = getSelectionRange(selection, editor);
-          let selectedText = editor.document.getText(selectedRange);
-          let newText;
-          if (selectedText.match(erb_regex)) {
-            newText = replaceErbTags(selectedText);
+          let selected_text = editor.document.getText(selectedRange);
+          let new_text;
+          if (selected_text.match(erb_regex)) {
+            new_text = replaceErbTags(selected_text);
           } else {
-            newText = insertErbTags(selectedText);
+            new_text = insertErbTags(selected_text);
           }
-          let delta = newText.length - selectedText.length;
-          newSelections.push(new vscode.Selection(selection.start.line, selection.start.character + lineOffset, selection.end.line, selection.end.character + lineOffset + delta));
-          lineOffset += delta;
-          editBuilder.replace(selectedRange, newText);
+          let delta = new_text.length - selected_text.length;
+          new_selections.push(new vscode.Selection(selection.start.line, selection.start.character + line_offset, selection.end.line, selection.end.character + line_offset + delta));
+          line_offset += delta;
+          editBuilder.replace(selectedRange, new_text);
         });
       }
     }
   });
-  editor.selections = newSelections;
+  editor.selections = new_selections;
 }
