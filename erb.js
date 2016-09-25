@@ -65,8 +65,6 @@ function getSelectionRange(selection, editor) {
   let end_position = new_selection.end;
   let opener_position = [];
   let closer_position = [];
-  // let start_char = ((selection.start.character-1) <= line.firstNonWhitespaceCharacterIndex) ? line.firstNonWhitespaceCharacterIndex : selection.start.character - 1;
-  // let end_char = ((selection.end.character+1) >= line.range.end.character) ? line.range.end.character : selection.end.character+1;
 
   while (start_position.character > line.firstNonWhitespaceCharacterIndex) {
     start_position = new vscode.Position(line.lineNumber, new_selection.start.character - 1);
