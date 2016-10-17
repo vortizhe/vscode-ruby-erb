@@ -15,7 +15,7 @@ function activate(context) {
 
   let disposable = vscode.commands.registerCommand('extension.toggleErb', function () {
     let editor = vscode.window.activeTextEditor;
-    if (!editor) return;
+    if (!editor || editor.document.languageId !== 'erb') return;
     toggleTags(editor);
   });
 
@@ -86,11 +86,10 @@ function getSelectionRange(selection, editor) {
 
   if (opener_position.length > 0 && closer_position.length > 0) {
     return new vscode.Range(new_selection.start, new_selection.end);
-  } else if ( selection.isEmpty && editor.document.getText(selection).trim().length == 0 && !line.isEmptyOrWhitespace) {
+  } else if ( selection.isEmpty && editor.document.getText(selection).trim().length === 0 && line.isEmptyOrWhitespace) {
     start_position = new vscode.Position(selection.start.line, line.firstNonWhitespaceCharacterIndex);
     end_position = line.range.end;
-    new_selection = new vscode.Selection(start, end);
-    return new vscode.Range(start, end);
+    return new vscode.Range(start_position, end_position);
   }
 
   return new vscode.Range(selection.start, selection.end);
@@ -119,13 +118,19 @@ function toggleTags(editor) {
           let selectedRange = getSelectionRange(selection, editor);
           let selected_text = editor.document.getText(selectedRange);
           let new_text;
+          let new_selection;
           if (selected_text.match(erb_regex)) {
             new_text = replaceErbTags(selected_text);
           } else {
             new_text = insertErbTags(selected_text);
           }
           let delta = new_text.length - selected_text.length;
-          new_selections.push(new vscode.Selection(selection.start.line, selection.start.character + line_offset, selection.end.line, selection.end.character + line_offset + delta));
+          if (selected_text.trim().length == 0) {
+            new_selection = new vscode.Selection(selection.start.line, selection.end.character + delta - 3, selection.end.line, selection.end.character + delta - 3);
+          } else {
+            new_selection = new vscode.Selection(selection.start.line, selection.start.character + line_offset, selection.end.line, selection.end.character + line_offset + delta);
+          }
+          new_selections.push(new_selection);
           line_offset += delta;
           editBuilder.replace(selectedRange, new_text);
         });
