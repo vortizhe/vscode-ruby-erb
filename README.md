@@ -20,8 +20,8 @@ Keyboard shortcut by default <code>ctrl+shift+`</code> but you can always person
 // Your keyboard shortcuts
 {
   "key": "ctrl+shift+`",
-  "command": "editor.action.indentLines",
-  "when": "editorTextFocus && !editorReadonly && !editorTabMovesFocus""
+  "command": "erb.toggleTags",
+  "when": "editorTextFocus && editorLangId == erb"
 },
 ```
 
