@@ -11,7 +11,7 @@ This extensions tries to provide simple Ruby and ERB support to Visual Studio Co
 * Code Snippets
 
 ## Command erb.toggleTags
-
+![Simple Ruby ERB](images/toggleTags.gif?raw=true)
 Supports multiple line/selection. Cycles through the tags `<%= %>`, `<% %>` and `<%# %>`.
 
 Keyboard shortcut by default <code>ctrl+shift+`</code> but you can always personalize:
