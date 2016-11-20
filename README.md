@@ -1,7 +1,5 @@
 # Simple Ruby ERB extension for Visual Studio Code
 
-<img src="images/icon.png?raw=true" width="90">
-
 This extensions tries to provide simple Ruby and ERB support to Visual Studio Code without messing with linting or debugging.
 
 ## Features
@@ -32,6 +30,7 @@ Inspired by [@eddorre](https://github.com/eddorre) SublimeText plugin [SublimeER
 ## TODO
 
 * Better code snippets integration
+* Add rails helpers snippets
 * Modularize extension
 * erb.toggleTags
   * Add tests
