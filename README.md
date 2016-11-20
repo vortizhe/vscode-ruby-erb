@@ -30,7 +30,7 @@ Inspired by [@eddorre](https://github.com/eddorre) SublimeText plugin [SublimeER
 ## TODO
 
 * Better code snippets integration
-* Add rails helpers snippets
+* Add more rails helpers snippets
 * Modularize extension
 * erb.toggleTags
   * Add tests

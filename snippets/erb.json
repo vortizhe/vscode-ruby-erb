@@ -68,5 +68,72 @@
 			"<% end %>"
 		],
 		"description": "each do"
+	},
+	"link_to": {
+		"prefix": "link_to",
+		"body": [
+			"<%= link_to '${text}', ${path} %>"
+		],
+		"description": "link_to"
+	},
+	"content_tag": {
+		"prefix": "content_tag",
+		"body": [
+			"<%= content_tag :${element}, '${text}' %>"
+		],
+		"description": "content_tag"
+	},
+	"image_tag": {
+		"prefix": "image_tag",
+		"body": [
+			"<%= image_tag '${filename}' %>"
+		],
+		"description": "image_tag"
+	},
+	"javascript_include_tag": {
+		"prefix": "javascript",
+		"body": [
+			"<%= javascript_include_tag '${filename}' %>"
+		],
+		"description": "javascript_include_tag"
+	},
+	"stylesheet_link_tag": {
+		"prefix": "stylesheet",
+		"body": [
+			"<%= stylesheet_link_tag '${filename}' %>"
+		],
+		"description": "stylesheet_link_tag"
+	},
+	"render": {
+		"prefix": "render",
+		"body": [
+			"<%= render '${path}' %>"
+		],
+		"description": "render"
+	},
+	"partial": {
+		"prefix": "partial",
+		"body": [
+			"<%= render partial: '${path}' %>"
+		],
+		"description": "render partial"
+	},
+	"content_for": {
+		"prefix": "content_for",
+		"body": [
+			"<%= content_for :$1 do %>",
+			"  $2",
+			"<% end %>"
+		],
+		"description": "content_for"
+	},
+	"remote_form_for": {
+		"prefix": "remote_form_for",
+		"body": [
+			"<%= form_for :$1, remote ${true} do |f| %>",
+			"  $2",
+			"<% end %>"
+		],
+		"description": "remote form_for"
 	}
 }

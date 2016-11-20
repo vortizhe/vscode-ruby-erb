@@ -2,7 +2,7 @@
   "name": "simple-ruby-erb",
   "displayName": "Simple Ruby ERB",
   "description": "Provides simple Ruby and ERB language, code snippets and ERB tag helper support for Visual Studio Code without messing with linting or debugging",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publisher": "vortizhe",
   "author": {
 		"name": "Victor Ortiz Heredia"
