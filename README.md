@@ -1,6 +1,6 @@
 # Simple Ruby ERB extension for Visual Studio Code
 
-![Simple Ruby ERB](images/icon.png?raw=true)
+<img src="images/icon.png?raw=true" width="90">
 
 This extensions tries to provide simple Ruby and ERB support to Visual Studio Code without messing with linting or debugging.
 
@@ -11,8 +11,10 @@ This extensions tries to provide simple Ruby and ERB support to Visual Studio Co
 * Code Snippets
 
 ## Command erb.toggleTags
-![Simple Ruby ERB](images/toggleTags.gif?raw=true)
+
 Supports multiple line/selection. Cycles through the tags `<%= %>`, `<% %>` and `<%# %>`.
+
+![Simple Ruby ERB](images/toggleTags.gif?raw=true)
 
 Keyboard shortcut by default <code>ctrl+shift+`</code> but you can always personalize:
 
@@ -25,11 +27,13 @@ Keyboard shortcut by default <code>ctrl+shift+`</code> but you can always person
 },
 ```
 
+Inspired by [@eddorre](https://github.com/eddorre) SublimeText plugin [SublimeERB](https://github.com/eddorre/SublimeERB).
+
 ## TODO
 
 * Better code snippets integration
+* Modularize extension
 * erb.toggleTags
-  * Modularize extension
   * Add tests
   * Improve selection after erb tag insertion
 
