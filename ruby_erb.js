@@ -11,15 +11,14 @@ const erb_blocks = [
       ];
 
 function activate(context) {
-  console.log('Congratulations, your extension "erb-plus" is now active!');
+  const subs = context.subscriptions
 
-  let disposable = vscode.commands.registerCommand('extension.toggleErb', function () {
+  subs.push(vscode.commands.registerCommand('erb.toggleTags', function () {
     let editor = vscode.window.activeTextEditor;
-    if (!editor || editor.document.languageId !== 'erb') return;
-    toggleTags(editor);
-  });
-
-  context.subscriptions.push(disposable);
+    if (editor || editor.document.languageId === 'erb') {
+      toggleTags(editor);
+    }
+  }));
 }
 exports.activate = activate;
 

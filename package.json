@@ -11,9 +11,10 @@
     "Languages"
   ],
   "activationEvents": [
-    "onCommand:extension.toggleErb"
+    "onLanguage:ruby",
+		"onLanguage:erb"
   ],
-  "main": "./erb.js",
+  "main": "./ruby_erb.js",
   "contributes": {
     "languages": [{
       "id": "ruby",
@@ -36,6 +37,9 @@
       "path": "./syntaxes/erb.tmLanguage"
     }],
     "commands": [{
+      "command": "erb.toggleTags",
+      "title": "Toggle between ERB Tag blocks"
+    }],
     "snippets": [{
 			"language": "ruby",
 			"path": "./snippets/ruby.json"
