@@ -16,6 +16,7 @@
     "Snippets",
     "Productivity"
   ],
+  "icon": "images/icon.png",
   "repository": {
 		"type": "git",
 		"url": "https://github.com/vortizhe/vscode-ruby-erb.git"
@@ -33,11 +34,11 @@
       "extensions": [".rb", ".rbx", ".rjs", "Rakefile", "rake", ".ru", "Gemfile", "Gemfile.lock", ".gemspec", ".irbrc", "Capfile", "Guardfile"],
       "configuration": "./language_configuration.ruby.json"
     }, {
-      "id": "erb",
+			"id": "erb",
       "aliases": ["erb", "Encapsulated Ruby", "HTML Ruby"],
 			"extensions": [".erb", ".rhtml", ".rhtm"],
       "configuration": "./language_configuration.erb.json"
-    }],
+		}],
     "grammars": [{
       "language": "ruby",
       "scopeName": "source.ruby",
@@ -62,16 +63,9 @@
 		}, {
 			"language": "erb",
 			"path": "./snippets/erb.json"
-    }]
+		}]
   },
   "scripts": {
     "postinstall": "node ./node_modules/vscode/bin/install"
-  },
-  "devDependencies": {
-    "vscode": "^0.11.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/vortizhe/vscode-erb-plus.git"
   }
 }
