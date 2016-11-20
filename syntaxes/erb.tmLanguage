@@ -5,8 +5,8 @@
 	<key>fileTypes</key>
 	<array>
 		<string>erb</string>
+		<string>rhtm</string>
 		<string>rhtml</string>
-		<string>html.erb</string>
 	</array>
 	<key>injections</key>
 	<dict>

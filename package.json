@@ -16,19 +16,32 @@
   "main": "./erb.js",
   "contributes": {
     "languages": [{
+      "id": "ruby",
+      "aliases": ["Ruby", "ruby"],
+      "extensions": [".rb", ".rbx", ".rjs", "Rakefile", "rake", ".ru", "Gemfile", "Gemfile.lock", ".gemspec", ".irbrc", "Capfile", "Guardfile"],
+      "configuration": "./language_configuration.ruby.json"
+    }, {
       "id": "erb",
-      "aliases": ["HTML Ruby", "erb"],
-      "extensions": [".erb", ".rhtml", ".html.erb"],
-      "configuration": "./erb.configuration.json"
+      "aliases": ["erb", "Encapsulated Ruby", "HTML Ruby"],
+			"extensions": [".erb", ".rhtml", ".rhtm"],
+      "configuration": "./language_configuration.erb.json"
     }],
     "grammars": [{
+      "language": "ruby",
+      "scopeName": "source.ruby",
+      "path": "./syntaxes/ruby.tmLanguage"
+    }, {
       "language": "erb",
       "scopeName": "text.html.erb",
       "path": "./syntaxes/erb.tmLanguage"
     }],
     "commands": [{
-      "command": "extension.toggleErb",
-      "title": "Toggle between erb blocks"
+    "snippets": [{
+			"language": "ruby",
+			"path": "./snippets/ruby.json"
+		}, {
+			"language": "erb",
+			"path": "./snippets/erb.json"
     }]
   },
   "scripts": {
