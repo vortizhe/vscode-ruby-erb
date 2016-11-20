@@ -40,6 +40,11 @@
       "command": "erb.toggleTags",
       "title": "Toggle between ERB Tag blocks"
     }],
+    "keybindings": [{
+      "command": "erb.toggleTags",
+      "key": "ctrl+shift+`",
+      "when": "editorTextFocus && editorLangId == erb"
+    }],
     "snippets": [{
 			"language": "ruby",
 			"path": "./snippets/ruby.json"
