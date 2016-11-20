@@ -1,15 +1,26 @@
 {
-  "name": "erb-plus",
-  "displayName": "erb-plus",
-  "description": "ERB syntax with tag helper and snippets",
-  "version": "0.0.1",
+  "name": "simple-ruby-erb",
+  "displayName": "Simple Ruby ERB",
+  "description": "Provides simple Ruby and ERB language, code snippets and ERB tag helper support for Visual Studio Code without messing with linting or debugging",
+  "version": "0.1.0",
   "publisher": "vortizhe",
+  "author": {
+		"name": "Victor Ortiz Heredia"
+	},
   "engines": {
-    "vscode": "^1.5.0"
+    "vscode": "^1.6.0"
   },
+  "license": "MIT",
   "categories": [
-    "Languages"
+    "Languages",
+    "Snippets",
+    "Productivity"
   ],
+  "repository": {
+		"type": "git",
+		"url": "https://github.com/vortizhe/vscode-ruby-erb.git"
+	},
+	"bugs": "https://github.com/vortizhe/vscode-ruby-erb/issues",
   "activationEvents": [
     "onLanguage:ruby",
 		"onLanguage:erb"
