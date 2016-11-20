@@ -9,6 +9,15 @@
 		["[", "]"],
 		["(", ")"]
 	],
+	"autoClosingPairs": [
+		["{", "}"],
+		["[", "]"],
+		["(", ")"],
+		["`", "`"],
+		{ "open": "'", "close": "'", "notIn": ["string", "comment"] },
+		{ "open": "\"", "close": "\"", "notIn": ["string"] },
+		{ "open": "#{", "close": "}", "notIn": ["comment"] }
+	],
 	"surroundingPairs": [
 		["{", "}"],
 		["[", "]"],
@@ -17,33 +26,5 @@
 		["'", "'"],
 		["`", "`"],
 		["#{","}"]
-	]
-}
-
-{
-	"comments": {
-		"lineComment": "#",
-		"blockComment": ["=begin", "=end"]
-	},
-	"brackets": [
-		["{", "}"],
-		["[", "]"],
-		["(", ")"]
-	],
-	"autoClosingPairs": [
-		["{", "}"],
-		["[", "]"],
-		["(", ")"],
-		["`", "`"],
-		{ "open": "'", "close": "'", "notIn": ["string", "comment"] },
-		{ "open": "\"", "close": "\"", "notIn": ["string"] }
-	],
-	"surroundingPairs": [
-		["{", "}"],
-		["[", "]"],
-		["(", ")"],
-		["\"", "\""],
-		["'", "'"],
-		["`", "`"]
 	]
 }
