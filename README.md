@@ -38,6 +38,9 @@ Inspired by [@eddorre](https://github.com/eddorre) SublimeText plugin [SublimeER
 
 ## Release Notes
 
+### 0.2.0
+Add rails snippets
+
 ### 0.1.0
 
 Initial release
