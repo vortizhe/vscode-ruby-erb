@@ -14,7 +14,7 @@ This extensions tries to provide simple Ruby and ERB support to Visual Studio Co
 
 Supports multiple line/selection. Cycles through the tags `<%= %>`, `<% %>` and `<%# %>`.
 
-Keyboard shortcut by default `ctrl`+`shift`+\`` but you can always personalize:
+Keyboard shortcut by default <code>ctrl+shift+`</code> but you can always personalize:
 
 ```
 // Your keyboard shortcuts
