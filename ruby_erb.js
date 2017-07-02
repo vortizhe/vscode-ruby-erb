@@ -15,7 +15,7 @@ function activate(context) {
 
   subs.push(vscode.commands.registerCommand('erb.toggleTags', function () {
     let editor = vscode.window.activeTextEditor;
-    if (editor || editor.document.languageId === 'erb') {
+    if (editor) {
       toggleTags(editor);
     }
   }));
