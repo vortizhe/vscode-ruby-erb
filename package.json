@@ -35,7 +35,7 @@
     }, {
 			"id": "erb",
       "aliases": ["erb", "Encapsulated Ruby", "HTML Ruby"],
-			"extensions": [".erb", ".rhtml", ".rhtm"],
+			"extensions": [".erb", ".rhtml", ".rhtm", ".html.erb"],
       "configuration": "./language_configuration.erb.json"
 		}],
     "grammars": [{
